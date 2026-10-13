@@ -1,6 +1,6 @@
 # 🚗 Nhận dạng biển số xe bằng OpenCV và KNN
 
-Dự án phát hiện và nhận dạng biển số xe (số và chữ cái) từ **ảnh tĩnh** và **video**, sử dụng các kỹ thuật xử lý ảnh của OpenCV kết hợp thuật toán phân loại **K-Nearest Neighbors (KNN)**.
+Dự án phát hiện và nhận dạng biển số xe (số và chữ cái) từ **ảnh tĩnh** và **video**, sử dụng các kỹ thuật xử lý ảnh của OpenCV kết hợp thuật toán phân loại **K-Nearest Neighbors (KNN)**[cite: 1, 11].
 
 ---
 
@@ -22,12 +22,12 @@ Dự án phát hiện và nhận dạng biển số xe (số và chữ cái) t�
 
 ## ✨ Tính năng
 
-- Nhận dạng biển số từ **ảnh** và hiển thị kết quả trực quan (khung biển số, từng ký tự, chuỗi nhận dạng).
-- Nhận dạng biển số từ **video** theo thời gian thực, đếm số biển số tìm thấy và tính tỷ lệ.
-- Hỗ trợ biển số **một dòng** và **hai dòng** (tự phân chia dòng theo vị trí ký tự).
-- Tự động **xoay thẳng** biển số bị nghiêng trước khi tách ký tự.
-- Ghi video kết quả ra file `output_1920x1080.mp4` (độ phân giải 1920x1080).
-- Bộ dữ liệu KNN gồm **32 lớp ký tự** (160 mẫu), có thể tự tạo lại bằng `GenData.py`.
+- Nhận dạng biển số từ **ảnh** và hiển thị kết quả trực quan (khung biển số, từng ký tự, chuỗi nhận dạng)[cite: 1, 11].
+- Nhận dạng biển số từ **video** theo thời gian thực, đếm số biển số tìm thấy và tính tỷ lệ[cite: 1, 11].
+- Hỗ trợ biển số **một dòng** và **hai dòng** (tự phân chia dòng theo vị trí ký tự)[cite: 1, 11].
+- Tự động **xoay thẳng** biển số bị nghiêng trước khi tách ký tự[cite: 1, 11].
+- Ghi video kết quả ra file `output_1920x1080.mp4` (độ phân giải 1920x1080)[cite: 1, 11].
+- Bộ dữ liệu KNN gồm **32 lớp ký tự** (160 mẫu), có thể tự tạo lại bằng `GenData.py`[cite: 1, 11].
 
 ---
 
@@ -52,7 +52,7 @@ Dự án phát hiện và nhận dạng biển số xe (số và chữ cái) t�
 ## 📁 Cấu trúc dự án
 
 ```
-.
+Doc-bien-so-xe-AI/
 ├── GenData.py              # Tạo dữ liệu huấn luyện KNN từ training_chars.png
 ├── Preprocess.py           # Các hàm tiền xử lý ảnh (extractValue, maximizeContrast, preprocess)
 ├── Image_test2.py          # Nhận dạng biển số từ ảnh
@@ -62,7 +62,8 @@ Dự án phát hiện và nhận dạng biển số xe (số và chữ cái) t�
 ├── training_chars.png      # Ảnh chứa các ký tự mẫu (đầu vào của GenData.py)
 ├── setup.txt               # Danh sách thư viện cần cài
 ├── measurementCriteria.txt # Tiêu chí đo lường kết quả
-├── README.md               # Tài liệu này
+├── .gitignore              # Cấu hình bỏ qua các thư mục tạm (venv, __pycache__)
+├── README.md               # Tài liệu hướng dẫn sử dụng
 └── data/
     ├── image/              # Ảnh kiểm thử (ví dụ: 10.jpg)
     ├── video/              # Video kiểm thử (ví dụ: video1.mp4)
@@ -73,8 +74,8 @@ Dự án phát hiện và nhận dạng biển số xe (số và chữ cái) t�
 
 ## 💻 Yêu cầu hệ thống
 
-- **Python** >= 3.8 (Tương thích tốt với cả Python 3.12, 3.13)
-- Các thư viện (theo `setup.txt`):
+- **Python** >= 3.8 (Tương thích tốt với cả Python 3.12, 3.13)[cite: 11]
+- Các thư viện (theo `setup.txt`)[cite: 1, 11]:
 
 | Thư viện | Phiên bản | Công dụng |
 |----------|-----------|-----------|
@@ -85,88 +86,108 @@ Dự án phát hiện và nhận dạng biển số xe (số và chữ cái) t�
 | `scikit-learn` | `>= 1.0.2` | Hỗ trợ KNN / đánh giá |
 
 > **Lưu ý:**
-> - Mã nguồn hiện tại chỉ import trực tiếp `cv2`, `numpy` và `math`. Các thư viện còn lại dùng cho mở rộng và đánh giá.
-> - Bắt buộc cài đặt `opencv-python==4.11.0.86` (không cài bản `5.x` trở lên vì module `cv2.ml` đã bị lược bỏ khỏi gói mặc định).
+> - Mã nguồn hiện tại chỉ import trực tiếp `cv2`, `numpy` và `math`[cite: 1, 11]. Các thư viện còn lại dùng cho mở rộng và đánh giá[cite: 1, 11].
+> - Bắt buộc cài đặt `opencv-python==4.11.0.86` (không cài bản `5.x` trở lên vì module `cv2.ml` đã bị lược bỏ khỏi gói mặc định)[cite: 11].
 
 ---
 
 ## ⚙️ Cài đặt
 
-```bash
-# 1. Tải và giải nén dự án (hoặc clone)
-unzip project.zip && cd project
+Thực hiện lần lượt các bước dưới đây trên Terminal (hoặc Command Prompt / PowerShell / Git Bash) để tải dự án về máy và thiết lập môi trường:
 
-# 2. (Khuyến nghị) Tạo và kích hoạt môi trường ảo
+### Bước 1: Clone dự án từ GitHub về máy
+
+```bash
+git clone [https://github.com/SinhhDev/Doc-bien-so-xe-AI.git](https://github.com/SinhhDev/Doc-bien-so-xe-AI.git)
+cd Doc-bien-so-xe-AI
+```
+
+*(Hoặc nếu tải bằng file nén `.zip` từ GitHub: Giải nén thư mục rồi mở Terminal tại thư mục `Doc-bien-so-xe-AI`).*
+
+### Bước 2: Tạo và kích hoạt môi trường ảo (Khuyến nghị)
+
+```bash
+# Tạo môi trường ảo tên là venv
 python -m venv venv
+
+# Kích hoạt môi trường ảo (chọn lệnh tương ứng với Terminal đang dùng):
 venv\Scripts\activate           # Windows (CMD / PowerShell)
 source venv/Scripts/activate    # Windows (Git Bash / MINGW64)
 source venv/bin/activate        # Linux / macOS
-
-# 3. Cài đặt thư viện
-pip install -r setup.txt
-# Hoặc chạy trực tiếp:
-pip install opencv-python==4.11.0.86 numpy imutils matplotlib scikit-learn
 ```
 
-Trước khi chạy, hãy kiểm tra:
+> Sau khi kích hoạt thành công, đầu dòng lệnh Terminal sẽ xuất hiện chữ `(venv)`.
 
-- Các file `classifications.txt`, `flattened_images.txt` nằm cùng thư mục với file `.py`.
-- Đường dẫn ảnh (`data/image/10.jpg`) và video (`data/video/video1.mp4`) trong code là chính xác.
+### Bước 3: Cài đặt các thư viện cần thiết
+
+```bash
+pip install -r setup.txt
+```
+
+*(Hoặc cài đặt trực tiếp bằng lệnh: `pip install opencv-python==4.11.0.86 numpy imutils matplotlib scikit-learn`)*[cite: 11].
 
 ---
 
 ## ▶️ Hướng dẫn sử dụng
 
-### Nhận dạng từ ảnh
+Đảm bảo bạn đang đứng tại thư mục gốc `Doc-bien-so-xe-AI` và đã kích hoạt môi trường ảo `(venv)` trước khi chạy các lệnh dưới đây:
+
+### 1. Nhận dạng biển số từ ảnh tĩnh
 
 ```bash
 python Image_test2.py
 ```
 
-- Ảnh được resize về 1920x1080.
-- Hiển thị cửa sổ ảnh gốc có khoanh vùng biển số, cùng cửa sổ riêng cho từng biển số với các ký tự đã nhận dạng.
-- Kết quả in ra terminal, ví dụ: `License Plate 1 is: 59A1 - 12345`.
-- Nhấn phím bất kỳ để đóng các cửa sổ.
+- Ảnh đầu vào sẽ được chuẩn hóa kích thước về 1920x1080[cite: 1, 11].
+- Chương trình hiển thị cửa sổ ảnh gốc đã khoanh vùng biển số, kèm theo cửa sổ riêng cho từng biển số với các ký tự đã nhận dạng[cite: 1, 11].
+- Kết quả biển số được in trực tiếp ra Terminal (ví dụ: `License Plate 1 is: 59A1 - 12345`)[cite: 1, 11].
+- Nhấp vào cửa sổ ảnh và **nhấn phím bất kỳ** để đóng toàn bộ cửa sổ[cite: 1, 11].
 
-Để đổi ảnh kiểm thử, sửa dòng:
+Để đổi sang ảnh kiểm thử khác, mở file `Image_test2.py` và sửa đường dẫn tại dòng:
 
 ```python
 img_path = "data/image/10.jpg"
 ```
 
-### Nhận dạng từ video
+### 2. Nhận dạng biển số từ video
 
 ```bash
 python Video_test2.py
 ```
 
-- Video được đọc từ `data/video/video1.mp4` (đổi đường dẫn ở dòng `cv2.VideoCapture(...)`).
-- Mỗi khung hình được xử lý; chỉ những biển số có **7–9 ký tự** hợp lệ mới được chấp nhận và đếm.
-- Terminal hiển thị: số biển số tìm thấy, tổng số khung hình, tỷ lệ tìm thấy.
-- Video kết quả được lưu tại `output_1920x1080.mp4`.
-- Nhấn phím **`q`** để thoát.
+- Video mặc định được đọc từ `data/video/video1.mp4`[cite: 1, 11].
+- Chương trình xử lý theo từng khung hình; chỉ những biển số tách được từ **7–9 ký tự** hợp lệ mới được chấp nhận và đếm[cite: 1, 11].
+- Terminal liên tục cập nhật: số biển số tìm thấy, tổng số khung hình đã duyệt, và tỷ lệ phát hiện (`plate found rate`)[cite: 1, 2, 11].
+- Video kết quả sau khi nhận dạng sẽ tự động được xuất ra file `output_1920x1080.mp4`[cite: 1, 11].
+- Nhấn phím **`q`** trên cửa sổ video nếu muốn dừng sớm[cite: 1, 11].
 
-> Nếu không phát được video, xem `data/README-VIDEO.txt`.
+Để đổi sang video kiểm thử khác, mở file `Video_test2.py` và sửa đường dẫn tại dòng:
+
+```python
+cap = cv2.VideoCapture('data/video/video1.mp4')
+```
+
+> Nếu gặp sự cố không phát được video, vui lòng xem hướng dẫn trong `data/README-VIDEO.txt`[cite: 1, 11].
 
 ---
 
 ## 🧠 Huấn luyện lại dữ liệu KNN
 
-Nếu muốn thay đổi bộ ký tự mẫu:
+Nếu muốn tự huấn luyện lại hoặc thay đổi bộ ký tự mẫu[cite: 1, 11]:
 
-1. Chuẩn bị ảnh `training_chars.png` chứa các ký tự mẫu (nền sáng, chữ tối).
-2. Chạy:
+1. Chuẩn bị ảnh `training_chars.png` chứa các ký tự mẫu (nền sáng, chữ tối)[cite: 1, 11].
+2. Chạy lệnh[cite: 1, 11]:
    ```bash
    python GenData.py
    ```
-3. Với mỗi ký tự được khoanh khung đỏ, **nhấn phím tương ứng** trên bàn phím (`0–9`, `A–Z` viết hoa).
-   - Nhấn `ESC` để thoát.
-   - Phím không hợp lệ sẽ bỏ qua mẫu đó.
-4. Chương trình ghi ra hai file:
-   - `classifications.txt`: nhãn (mã ASCII) của từng mẫu.
-   - `flattened_images.txt`: ảnh ký tự 20x30 đã làm phẳng.
+3. Với mỗi ký tự được khoanh khung đỏ trên màn hình, **nhấn phím tương ứng** trên bàn phím (`0–9`, `A–Z` viết hoa)[cite: 1, 11]:
+   - Nhấn `ESC` để thoát chương trình[cite: 1, 11].
+   - Nhấn phím không hợp lệ để bỏ qua mẫu đó[cite: 1, 11].
+4. Sau khi hoàn tất, chương trình tự động xuất ra hai file[cite: 1, 11]:
+   - `classifications.txt`: nhãn (mã ASCII) của từng mẫu[cite: 1, 11].
+   - `flattened_images.txt`: dữ liệu ảnh ký tự 20x30 đã làm phẳng[cite: 1, 11].
 
-**Bộ dữ liệu hiện tại:** 32 ký tự × 5 mẫu = **160 mẫu**, gồm chữ số `0–9` và các chữ cái dùng trên biển số Việt Nam (không có `I`, `J`, `O`, `W`).
+**Bộ dữ liệu hiện tại:** 32 ký tự × 5 mẫu = **160 mẫu**, gồm chữ số `0–9` và các chữ cái dùng trên biển số Việt Nam (không có `I`, `J`, `O`, `W`)[cite: 1, 11].
 
 ---
 
@@ -188,18 +209,18 @@ Nếu muốn thay đổi bộ ký tự mẫu:
 
 ## 📊 Đánh giá kết quả
 
-Trong video, **tỷ lệ phát hiện** được tính theo công thức:
+Trong video, **tỷ lệ phát hiện** được tính theo công thức[cite: 1, 11]:
 
 ```
 tỷ lệ = (số biển số nhận dạng hợp lệ / tổng số khung hình) × 100%
 ```
 
-Một số tiêu chí nên dùng để đo lường (có thể ghi vào `measurementCriteria.txt`):
+Các tiêu chí đo lường chi tiết được trình bày trong file `measurementCriteria.txt`, bao gồm[cite: 1, 11]:
 
-- **Tỷ lệ phát hiện biển số** (detection rate).
-- **Độ chính xác ký tự** (character accuracy) và **độ chính xác cả biển** (plate accuracy) so với nhãn thực tế.
-- **Tốc độ xử lý** (FPS).
-- Phân tích các ký tự hay bị nhầm (ví dụ `8/B`, `0/D`, `5/S`, `2/Z`).
+- **Tỷ lệ phát hiện biển số** (Detection Rate)[cite: 1, 11].
+- **Độ chính xác ký tự** (Character Accuracy) và **độ chính xác toàn biển** (Plate Accuracy) so với nhãn thực tế[cite: 1, 11].
+- **Tốc độ xử lý** (FPS)[cite: 1, 11].
+- Phân tích các cặp ký tự dễ bị nhầm lẫn (ví dụ `8/B`, `0/D`, `5/S`, `2/Z`)[cite: 1, 11].
 
 ---
 
@@ -207,23 +228,23 @@ Một số tiêu chí nên dùng để đo lường (có thể ghi vào `measure
 
 **Hạn chế hiện tại**
 
-- `Image_test2.py` không lọc theo tỷ lệ w/h nên có thể nhận nhầm các vùng 4 cạnh khác là biển số.
-- KNN với 160 mẫu dễ nhầm các ký tự có hình dạng tương tự; nhạy với góc chụp, ánh sáng và độ mờ.
-- Chia dòng biển số dựa trên ngưỡng cố định `height / 3`.
+- `Image_test2.py` không lọc theo tỷ lệ w/h nên có thể nhận nhầm các vùng 4 cạnh khác là biển số[cite: 1, 11].
+- KNN với 160 mẫu dễ nhầm các ký tự có hình dạng tương tự; nhạy với góc chụp, ánh sáng và độ mờ[cite: 1, 11].
+- Chia dòng biển số dựa trên ngưỡng cố định `height / 3`[cite: 1, 11].
 
 **Hướng phát triển**
 
-- Tăng số mẫu huấn luyện cho mỗi ký tự, bổ sung nhiều font và điều kiện ánh sáng.
-- Dùng biến đổi phối cảnh (`getPerspectiveTransform`) thay cho xoay đơn giản.
-- Đối chiếu kết quả với định dạng biển số Việt Nam để lọc kết quả sai.
-- Thay KNN bằng CNN/SVM hoặc dùng YOLO để phát hiện biển số.
-- Bỏ qua trùng lặp giữa các khung hình liên tiếp để đếm biển số chính xác hơn.
+- Tăng số mẫu huấn luyện cho mỗi ký tự, bổ sung nhiều font và điều kiện ánh sáng[cite: 1, 11].
+- Dùng biến đổi phối cảnh (`getPerspectiveTransform`) thay cho xoay đơn giản[cite: 1, 11].
+- Đối chiếu kết quả với định dạng biển số Việt Nam để lọc kết quả sai[cite: 1, 11].
+- Thay KNN bằng CNN/SVM hoặc dùng YOLO để phát hiện biển số[cite: 1, 11].
+- Bỏ qua trùng lặp giữa các khung hình liên tiếp để đếm biển số chính xác hơn[cite: 1, 11].
 
 ---
 
 ## 📚 Tài liệu tham khảo
 
-1. [OpenCV Tutorial: Unlock the Power of Visual Data Processing – DataCamp](https://www.datacamp.com/tutorial/opencv-tutorial)
-2. [OpenCV tutorial for beginners – FULL COURSE in 3 hours with Python (YouTube)](https://www.youtube.com/watch?v=eDIj5LuIL4A)
-3. [Machine Learning – K-nearest neighbors (KNN) – W3Schools](https://www.w3schools.com/python/python_ml_knn.asp)
-4. Các kênh YouTube tham khảo: Hà Nam 88, Computer Vision Engineer, Mrzaizai2k – AI, Nicholas Renotte, …
+1. [OpenCV Tutorial: Unlock the Power of Visual Data Processing – DataCamp](https://www.datacamp.com/tutorial/opencv-tutorial)[cite: 1, 11]
+2. [OpenCV tutorial for beginners – FULL COURSE in 3 hours with Python (YouTube)](https://www.youtube.com/watch?v=eDIj5LuIL4A)[cite: 1, 11]
+3. [Machine Learning – K-nearest neighbors (KNN) – W3Schools](https://www.w3schools.com/python/python_ml_knn.asp)[cite: 1, 11]
+4. Các kênh YouTube tham khảo: Hà Nam 88, Computer Vision Engineer, Mrzaizai2k – AI, Nicholas Renotte, …[cite: 1, 11]
