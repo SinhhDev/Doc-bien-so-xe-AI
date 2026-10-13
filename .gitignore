@@ -1,0 +1,29 @@
+# Môi trường ảo Python (Virtual Environment)
+venv/
+.venv/
+env/
+ENV/
+
+# Các file bộ nhớ đệm và biên dịch của Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Cấu hình cá nhân của trình soạn thảo (VS Code, PyCharm)
+.vscode/
+.idea/
+
+# File rác của hệ điều hành (Windows / macOS)
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Các file ảnh chụp trung gian nếu bỏ comment cv2.imwrite trong Preprocess.py
+tophat.jpg
+blackhat.jpg
+gauss.jpg
+imgGrayscalePlusTopHatMinusBlackHat.jpg
+
+# (Tùy chọn) Bỏ dấu # ở dòng dưới nếu bạn KHÔNG muốn đẩy file kết quả video nặng lên GitHub
+# output_1920x1080.mp4

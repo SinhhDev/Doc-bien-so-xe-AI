@@ -1,0 +1,30 @@
+======================================================================
+        TIÊU CHÍ ĐO LƯỜNG VÀ ĐÁNH GIÁ KẾT QUẢ NHẬN DẠNG BIỂN SỐ XE
+======================================================================
+
+1. TỶ LỆ PHÁT HIỆN BIỂN SỐ TRÊN VIDEO (Detection Rate)
+   - Công thức tính:
+     Tỷ lệ phát hiện (%) = (Số biển số nhận dạng hợp lệ / Tổng số khung hình) x 100%
+   - Điều kiện hợp lệ: Vùng contour biển số có 4 cạnh, tỷ lệ rộng/cao (w/h) nằm trong khoảng 0.8 - 1.5 (biển vuông) hoặc 4.5 - 6.5 (biển dài), và tách được từ 7 đến 9 ký tự.
+   - Ghi nhận thực nghiệm trên video kiểm thử (video1.mp4):
+     + Số lượt biển số nhận dạng hợp lệ: 122
+     + Số khung hình xử lý: 104
+
+2. ĐỘ CHÍNH XÁC NHẬN DẠNG KÝ TỰ (Character Accuracy)
+   - Công thức tính:
+     Độ chính xác ký tự (%) = (Số ký tự nhận dạng đúng / Tổng số ký tự thực tế trên biển số) x 100%
+   - Ý nghĩa: Đánh giá hiệu quả của việc phân đoạn ký tự (diện tích 1% - 9% diện tích biển, tỷ lệ w/h từ 0.25 - 0.7) và phân loại bằng thuật toán KNN (k = 3, ảnh chuẩn hóa 20x30 pixel).
+
+3. ĐỘ CHÍNH XÁC TOÀN BIỂN SỐ (Plate Accuracy)
+   - Công thức tính:
+     Độ chính xác toàn biển (%) = (Số biển số đọc đúng hoàn toàn tất cả ký tự / Tổng số biển số phát hiện được) x 100%
+   - Ý nghĩa: Một biển số chỉ được tính là đúng hoàn toàn khi tất cả các chữ số, chữ cái và thứ tự ghép dòng (dòng 1 có y < height/3, dòng 2 có y >= height/3) đều khớp 100% với biển số thực tế.
+
+4. TỐC ĐỘ XỬ LÝ (Processing Speed - FPS)
+   - Đơn vị đo: Số khung hình xử lý được trên mỗi giây (Frames Per Second - FPS).
+   - Tiêu chí: Đánh giá khả năng đáp ứng thời gian thực (real-time) khi thực hiện chuỗi tiền xử lý (HSV Value, Top-Hat, Black-Hat, Gaussian Blur 5x5, Adaptive Threshold), xoay nghiêng (warpAffine) và ghi video đầu ra Full HD (1920x1080 @ 30fps).
+
+5. PHÂN TÍCH NHẦM LẪN KÝ TỰ (Confusion Analysis)
+   - Do bộ dữ liệu huấn luyện KNN gồm 160 mẫu (32 lớp ký tự x 5 mẫu), mô hình có thể xảy ra nhầm lẫn giữa các cặp ký tự có hình thái tương đồng khi ảnh bị mờ, nghiêng hoặc chói sáng:
+     + Nhầm lẫn giữa số và chữ: '8' và 'B', '0' và 'D', '5' và 'S', '2' và 'Z', '6' và 'G', '4' và 'A'.
+     + Nhầm lẫn giữa các chữ số: '3' và '5' (hoặc '9'), '1' và '7'.
